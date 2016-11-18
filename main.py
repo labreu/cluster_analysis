@@ -48,6 +48,7 @@ def add_vertice():
 
     name = request.form['vert1_name']
     g.add_vert(Node(str(name)))
+    print('Name:', name)
     return render_template('index.html', vertice_added=name,list_of_vs=g.graph.keys())
 
 
@@ -55,6 +56,7 @@ def add_vertice():
 def add_connection():
     name = request.form['vert1_conn']
     name2 = request.form['vert2_conn']
+    print('{} - {}'.format(name, name2))
     g.add_edge(str(name), str(name2))
     connection_added = '{} - {}'.format(name, name2)
 
@@ -93,4 +95,4 @@ def run_():
 g = Graph()
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
