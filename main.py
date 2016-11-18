@@ -55,7 +55,7 @@ def add_vertice():
 def add_connection():
     name = request.form['vert1_conn']
     name2 = request.form['vert2_conn']
-    g.add_edge(name, name2)
+    g.add_edge(str(name), str(name2))
     connection_added = '{} - {}'.format(name, name2)
 
     return render_template('index.html', connection_added=connection_added, list_of_vs=g.graph.keys())
