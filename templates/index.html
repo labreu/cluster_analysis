@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Challenge</title>
+    <h1>Graph analysis</h1>
+
+<div >
+    <ul>
+        <li><a href="/">See graph</a></li>
+        <li><a href="/clean">Clean graph</a></li>
+    </ul>
+    {%if msg %}
+        <h4>Please add at least two edges.</h4>
+    {%endif%}
+</div>
+
+</head>
+<body>
+<form action="/edgesdat" method="post">
+    <h3>Use edges.dat as input</h3> <input type="submit" value="Try it!">
+</form>
+
+<h3>Add vertices</h3>
+<form action="/add_vertice" method="post">
+    <label for="vert1_name">Vertice name:</label>
+    <input type="text" name="vert1_name" id="vert1_name">
+    <button type="submit">Submit</button>
+{%if vertice_added %}
+    <h4>Vertice added: {{vertice_added}}</h4>
+{%endif%}
+</form>
+
+<h3>Add connections</h3>
+<form action="/add_connection" method="post">
+    <label for="vert1_conn">Vertice 1 name:</label>
+    <input type="text" name="vert1_conn" id="vert1_conn">
+    <label for="vert2_conn">Vertice 2 name:</label>
+    <input type="text" name="vert2_conn" id="vert2_conn">
+    <button type="submit">Submit</button>
+{%if connection_added %}
+    <h4>Connection added: {{connection_added}}</h4>
+{%endif%}
+</form>
+
+
+
+{%if list_of_vs %}
+<h3>Vertices available:</h3>
+    {{list_of_vs}}
+{%endif%}
+
+{%if table %}
+<h3>Closeness table</h3>
+    {{table|safe}}
+{%endif%}
+
+{%if conns %}
+<h2>Connections table</h2>
+    {{conns|safe}}
+{%endif%}
+</body>
+</html>
+
+<style>
+
+    body{margin: 50px;}
+    div{padding: 5px;
+        font-size: 110%;}
+</style>
