@@ -73,7 +73,7 @@ def run():
     farness = []
 
     # Calculate farness for all vertices
-    for node in range(100):
+    for node in g.graph.keys():
         g.reset_colors_distances()
         g.bfs(node)
         farness.append((node, sum(g.get_distances())))
