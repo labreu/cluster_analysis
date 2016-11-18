@@ -17,3 +17,5 @@ file; each line of the file consists of two vertex names separated by
 a single space, representing an edge between those two nodes.
 
 * It uses Breadth-First Search in Python to find the minimum paths. I used this algorithm because I have implementend it before using C language for another project (https://www.youtube.com/watch?v=6Z3y2hkQD74).
+
+* There is an IPython notebook for execution or you can just execute the Challenge.py file with "python Challenge.py" using python 2.7.
