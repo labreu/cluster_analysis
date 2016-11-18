@@ -37,7 +37,6 @@ def clean():
     g.graph = {}
     g.edges_count = 0
     g.target_num = 0
-
     return redirect('/')
 
 @app.route("/add_vertice", methods=['POST'])
@@ -89,5 +88,4 @@ def run():
 g = Graph()
 
 if __name__ == "__main__":
-    # run()
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
