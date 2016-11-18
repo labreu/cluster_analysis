@@ -27,17 +27,21 @@ def hello():
     else:
         return render_template('index.html', msg=True)
 
+
 @app.route('/edgesdat', methods=['POST'])
 def edgesdat():
-    run()
+    run_()
     return redirect('/')
+
 
 @app.route('/clean')
 def clean():
+    print('cleaning..')
     g.graph = {}
     g.edges_count = 0
     g.target_num = 0
     return redirect('/')
+
 
 @app.route("/add_vertice", methods=['POST'])
 def add_vertice():
@@ -57,7 +61,7 @@ def add_connection():
     return render_template('index.html', connection_added=connection_added, list_of_vs=g.graph.keys())
 
 
-def run():
+def run_():
     with open('edges.dat', 'r') as f:
         edges = [line.replace('\n', '') for line in f]
 
@@ -70,18 +74,19 @@ def run():
         v1, v2 = row.split(' ')
         g.add_edge(v1, v2)
 
-    farness = []
+    # farness = []
+    #
 
     # Calculate farness for all vertices
-    for node in g.graph.keys():
-        g.reset_colors_distances()
-        g.bfs(node)
-        farness.append((node, sum(g.get_distances())))
-
-    df = pd.DataFrame(farness)
-    df.columns = ['Node', 'Farness']
-    df['Closeness'] = 1/df['Farness']
-    print(df.sort('Closeness', ascending=False))
+    # for node in g.graph.keys():
+    #     g.reset_colors_distances()
+    #     g.bfs(node)
+    #     farness.append((node, sum(g.get_distances())))
+    #
+    # df = pd.DataFrame(farness)
+    # df.columns = ['Node', 'Farness']
+    # df['Closeness'] = 1/df['Farness']
+    # print(df.sort('Closeness', ascending=False))
 
 
 # Create graph structure
